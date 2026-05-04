@@ -2,7 +2,7 @@
 
 VOWELS = "aeiouAEIOU"
 def vowel(letter):
-    """Checking if the letter is a vowel or not using shorthand if-else statement."""
+    """Checking if the letter is a vowel or not using membership operator"""
     return letter in VOWELS
 
 
