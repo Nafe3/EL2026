@@ -1,7 +1,7 @@
 """Dictionary Problems - Testing student capability with dictionary operations."""
 
 
-def dictionary_operations(dict1, dict2):
+def dictionary_operations(dict1:dict, dict2:dict) -> dict:
     """Perform basic operations on two dictionaries.
 
     Args:
@@ -12,6 +12,16 @@ def dictionary_operations(dict1, dict2):
         dict: Dictionary with merged, common_keys, and unique_keys
     """
     # Write your solution here
+    res_dict:dict = {"merged": {}, "common_keys": {}, "unique_keys": {}}
+    res_dict["merged"] = {**dict1, **dict2} 
+    print(dict1)
+    print(dict2)
+    print(type(dict1))
+    print(type(dict2))
+    res_dict["common_keys"] = dict1.keys() & dict2.keys()
+    print(type(dict1.keys()))
+    res_dict["unique_keys"] = dict1.keys() ^ dict2.keys()
+    return res_dict
 
 
 def count_word_frequency(text):
@@ -24,7 +34,11 @@ def count_word_frequency(text):
         dict: Dictionary with word frequencies
     """
     # Write your solution here
-
+    word_list = text.split()
+    word_freq = {}
+    for word in word_list:
+        word_freq[word] = word_freq.get(word, 0) + 1
+    return word_freq
 
 def dictionary_filtering(students_grades):
     """Filter students based on their grades.
@@ -36,7 +50,10 @@ def dictionary_filtering(students_grades):
         dict: Dictionary with students who have grades >= 70
     """
     # Write your solution here
-
+    for student in list(students_grades.keys()):
+        if students_grades[student] < 70:
+            students_grades.pop(student)
+    return students_grades
 
 def nested_dictionary_access(nested_dict, keys_path):
     """Access value in nested dictionary using a list of keys.
@@ -49,7 +66,11 @@ def nested_dictionary_access(nested_dict, keys_path):
         any: Value at the specified path, or None if path doesn't exist
     """
     # Write your solution here
-
+    for key in keys_path:
+        nested_dict = nested_dict.get(key)
+        if nested_dict is None:
+            return None
+    return nested_dict
 
 if __name__ == "__main__":
     # Test cases
