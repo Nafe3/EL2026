@@ -4,7 +4,8 @@ import os
 
 
 def access_env(env_var):
-    """Write your solution here. Don't forget to return the result at the end."""
+    """Accessing environment variables using os.environ.get"""
+    return os.environ.get(env_var)
 
 
 if __name__ == "__main__":
@@ -17,3 +18,4 @@ if __name__ == "__main__":
     assert access_env("TEST1234") == "test_value"
     assert access_env("TEST1235") == "test_value2"
     assert access_env("TEST1236") == "test_value3"
+    print("All test cases passed")
