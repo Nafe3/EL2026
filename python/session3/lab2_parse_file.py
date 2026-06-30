@@ -1,7 +1,7 @@
 """File Parsing Problems - Testing student capability with file parsing and text processing."""
 
 import os
-
+import re
 
 def parse_config_file(file_path):
     r"""
@@ -17,6 +17,16 @@ def parse_config_file(file_path):
     pattern = r'^([A-Z_][A-Z0-9_:${}]*)\s*=\s*"([^"]*(?:\\[\s\S]*?)*)"'
 
     """
+    pattern = r'^([A-Z_][A-Z0-9_:${}]*)\s*=\s*"([^"]*(?:\\[\s\S]*?)*)"'
+    config_dict = {}
+    with open(file_path, "r") as file:
+        for line in file:
+            line = line.strip()
+            match = re.match(pattern, line)
+            if match:
+                key, value = match.groups()
+                config_dict[key] = value
+    return config_dict
 
 
 if __name__ == "__main__":
